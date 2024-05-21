@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Cheesecake Factory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+        }
+        .header-logo {
+            background-color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .header-logo img {
+            height: 150px;
+            width: auto;
+        }
+        header {
+            background-color: #FF5C94;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #FF5C94;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar ul li a:hover {
+            background-color: #FFCADC;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        .search-bar input {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 500px;
+        }
+        .cart {
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #FF5C94;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+        .cart-icon-img {
+            height: 40px;
+            width: 40px;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FF5C94;
+            padding: 20px 30px;
+            color: white;
+        }
+        .footer-logo img {
+            height: 125px;
+            width: auto;
+        }
+        .social-links {
+            display: flex;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 50%;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .social-links a img {
+            width: 40px;
+            height: 40px;
+        }
+        .social-links a:hover {
+            border-color: #F0EBF4;
+        }
+        .cart-container {
+            padding: 100px;
+        }
+        .cart-container h1 {
+            color: #FF5C94;
+        }
+        .cart-container h2 {
+            color: #FF5C94;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #FFCADC;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item img {
+            height: 100px;
+            width: auto;
+        }
+        .cart-item-details {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+        .cart-item-info {
+            margin-left: 20px;
+        }
+        .cart-item-name {
+            font-size: 18px;
+            color: #555;
+        }
+        .cart-item-quantity {
+            font-size: 18px;
+            color: #555;
+        }
+        .cart-item-price {
+            font-size: 18px;
+            color: #555;
+        }
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-controls button {
+            background-color: #FF5C94;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .cart-item-controls button:hover {
+            background-color: #FFCADC;
+        }
+        .cart-total {
+            font-size: 24px;
+            color: #FF5C94;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .order-form {
+            margin-top: 20px;
+        }
+        .order-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 18px;
+            color: #555;
+        }
+        .order-form input,
+        .order-form button {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .order-form button {
+            background-color: #FF5C94;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .order-form button:hover {
+            background-color: #FFCADC;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+        .popup h3 {
+            color: #FF5C94;
+        }
+        .popup p {
+            margin: 10px 0;
+            color: #555;
+        }
+        .popup button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #FF5C94;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: #FFCADC;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-logo">
+        <img src="logo.png" alt="Cheesecake Factory Logo">
+    </div>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="cart">
+                <a href="cart.html" target="_blank">
+                    <img src="bag.png" alt="Cart" class="cart-icon-img">
+                </a>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+    <div class="cart-container">
+        <h1>YOUR SHOPPING CART</h1>
+        <hr style="height:2px; border-width:0; color:#FF5C94; background-color:#FF5C94">
+        <div id="cart-items"></div>
+        <hr style="height:2px; border-width:0; color:#FF5C94; background-color:#FF5C94">
+        <div class="cart-total" id="cart-total"></div>
+        <form class="order-form" id="order-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="contact">Contact Number:</label>
+            <input type="text" id="contact" name="contact" required>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+            <label for="delivery-date">Delivery Date:</label>
+            <input type="date" id="delivery-date" name="delivery-date" required>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+    <div class="popup" id="order-confirmation">
+        <h3>Order Confirmation</h3>
+        <p id="confirmation-details"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="pinklogo.png" alt="Cheesecake Factory Logo">
+        </div>
+        <div class="workinghours">
+            <h4>Working Hours</h4>
+            <p><b>OPEN DAILY</b> From 8:00AM to 6:00PM</p>
+        </div>
+        <div class="emailus">
+            <h4>Email Us</h4>
+            <p>cheesecakefactory@gmail.com</p>
+        </div>
+        <div class="social-links">
+            <h4>Social Links</h4>
+            <a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItemsElement = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const orderForm = document.getElementById('order-form');
+            const popup = document.getElementById('order-confirmation');
+            const confirmationDetails = document.getElementById('confirmation-details');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            function updateCartInLocalStorage() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            function updateCartCount() {
+                const cartCountElement = document.getElementById('cart-count');
+                cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+
+            function displayCart() {
+                cartItemsElement.innerHTML = '';
+                let total = 0;
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+
+                    const itemImageElement = document.createElement('img');
+                    itemImageElement.src = item.image;
+                    itemImageElement.alt = item.name;
+
+                    const itemDetailsElement = document.createElement('div');
+                    itemDetailsElement.className = 'cart-item-details';
+
+                    const itemInfoElement = document.createElement('div');
+                    itemInfoElement.className = 'cart-item-info';
+
+                    const itemNameElement = document.createElement('div');
+                    itemNameElement.className = 'cart-item-name';
+                    itemNameElement.textContent = item.name;
+
+                    const itemQuantityElement = document.createElement('div');
+                    itemQuantityElement.className = 'cart-item-quantity';
+                    itemQuantityElement.textContent = `x ${item.quantity}`;
+
+                    const itemPriceElement = document.createElement('div');
+                    itemPriceElement.className = 'cart-item-price';
+                    itemPriceElement.textContent = `₱${(item.price * item.quantity).toFixed(2)}`;
+
+                    const itemControlsElement = document.createElement('div');
+                    itemControlsElement.className = 'cart-item-controls';
+
+                    const increaseButton = document.createElement('button');
+                    increaseButton.textContent = '+';
+                    increaseButton.onclick = function() {
+                        item.quantity++;
+                        updateCartInLocalStorage();
+                        displayCart();
+                        updateCartCount();
+                    };
+
+                    const decreaseButton = document.createElement('button');
+                    decreaseButton.textContent = '-';
+                    decreaseButton.onclick = function() {
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                        } else {
+                            cart = cart.filter(cartItem => cartItem !== item);
+                        }
+                        updateCartInLocalStorage();
+                        displayCart();
+                        updateCartCount();
+                    };
+
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.onclick = function() {
+                        cart = cart.filter(cartItem => cartItem !== item);
+                        updateCartInLocalStorage();
+                        displayCart();
+                        updateCartCount();
+                    };
+
+                    itemControlsElement.appendChild(increaseButton);
+                    itemControlsElement.appendChild(decreaseButton);
+                    itemControlsElement.appendChild(removeButton);
+
+                    itemInfoElement.appendChild(itemNameElement);
+                    itemInfoElement.appendChild(itemQuantityElement);
+                    itemInfoElement.appendChild(itemPriceElement);
+
+                    itemDetailsElement.appendChild(itemImageElement);
+                    itemDetailsElement.appendChild(itemInfoElement);
+
+                    itemElement.appendChild(itemDetailsElement);
+                    itemElement.appendChild(itemControlsElement);
+
+                    cartItemsElement.appendChild(itemElement);
+
+                    total += item.price * item.quantity;
+                });
+                cartTotalElement.textContent = `Total: ₱${total.toFixed(2)}`;
+            }
+
+            orderForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const contact = document.getElementById('contact').value;
+                const address = document.getElementById('address').value;
+                const deliveryDate = document.getElementById('delivery-date').value;
+                const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+                confirmationDetails.innerHTML = `
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Contact Number:</strong> ${contact}</p>
+                    <p><strong>Address:</strong> ${address}</p>
+                    <p><strong>Delivery Date:</strong> ${deliveryDate}</p>
+                    <p><strong>Total Bill:</strong> ₱${total}</p>
+                `;
+                popup.style.display = 'block';
+            });
+
+            window.closePopup = function() {
+                popup.style.display = 'none';
+            }
+
+            displayCart();
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
+

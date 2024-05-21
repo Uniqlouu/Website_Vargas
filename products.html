@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Products | Cheesecake Factory</title>
+	
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #FFFFFF;
+		}
+		.header-logo {
+			background-color: white;
+			text-align: center;
+			padding: 10px 0;
+		}
+		.header-logo img {
+			height: 150px;
+			width: auto;
+		}
+		header {
+			background-color: #FF5C94;
+			padding: 10px 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.navbar {
+			display: flex;
+			align-items: center;
+			background-color: #FF5C94;
+			flex-grow: 1;
+			justify-content: space-between;
+		}
+		.navbar ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+		.navbar ul li {
+			margin: 0 15px;
+		}
+		.navbar ul li a {
+			color: white;
+			text-decoration: none;
+			font-size: 18px;
+		}
+		.navbar ul li a:hover {
+			background-color: #FFCADC;
+			padding: 5px;
+			border-radius: 5px;
+		}
+		.search-bar {
+			display: flex;
+			justify-content: center;
+			flex-grow: 1;
+		}
+		.search-bar input {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 500px;
+		}
+		.cart {
+			position: relative;
+		}
+		.cart-count {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			background-color: #FF5C94;
+			color: white;
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 14px;
+		}
+		.cart-icon-img {
+			height: 40px;
+			width: 40px;
+		}
+			.best-sellers {
+			padding: 50px 20px;
+			text-align: center;
+			background-color: #FFEFF5;
+		}
+		
+		.menu h2 {
+			font-size: 28px;
+			color: #FF5C94;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		.menu .products {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 20px;
+		}
+		.menu .product {
+			background-color: white;
+			border: 2px solid #FFCADC;
+			border-radius: 5px;
+			padding: 20px;
+			width: 300px;
+			text-align: center;
+		}
+		.menu .product img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 5px;
+		}
+		.menu .product h3 {
+			font-size: 20px;
+			color: #FF5C94;
+			margin: 10px 0;
+		}
+		.menu .product p {
+			font-size: 14px;
+			color: #555;
+		}
+		.menu .product .product-code {
+			font-size: 12px;
+			color: #555;
+			margin: 5px 0;
+		}
+		.menu .product .price {
+			font-size: 18px;
+			color: #FF5C94;
+			margin: 10px 0;
+		}
+		.menu .product .add-to-cart {
+			display: inline-block;
+			padding: 10px 15px;
+			background-color: #FF5C94;
+			color: white;
+			text-decoration: none;
+			font-size: 16px;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+		.menu .product .add-to-cart:hover {
+			background-color: #FFCADC;
+		}
+		
+		.footer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #FF5C94;
+			padding: 20px 30px;
+			color: white;
+		}
+		.footer-logo img {
+			height: 125px;
+			width: auto;
+		}
+		.social-links {
+			display: flex;
+		}
+		.social-links a {
+			display: inline-block;
+			margin: 0 10px;
+			text-decoration: none;
+			border-radius: 50%;
+			overflow: hidden;
+			transition: border-color 0.3s ease;
+		}
+		.social-links a img {
+			width: 40px;
+			height: 40px;
+		}
+		.social-links a:hover {
+			border-color: #F0EBF4;
+		}
+		.cart-dropdown {
+			display: none;
+			position: absolute;
+			right: 0;
+			top: 100%;
+			width: 300px;
+			background-color: white;
+			border: 1px solid #ddd;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			z-index: 1000;
+		}
+		.cart-dropdown ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.cart-dropdown ul li {
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+			display: flex;
+			justify-content: space-between;
+		}
+		.cart-dropdown ul li:last-child {
+			border-bottom: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="header-logo">
+		<img src="logo.png" alt="Cheesecake Factory Logo">
+	</div>
+	<header>
+		<nav class="navbar">
+			<ul>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/index.html">Home</a></li>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/products.html">Products</a></li>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/contacts.html">Contacts</a></li>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/aboutus.html">About Us</a></li>
+			</ul>
+			<div class="search-bar">
+				<input type="text" placeholder="Search...">
+			</div>
+			<div class="cart">
+				<a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/cart.html" target="_blank">
+					<img src="bag.png" alt="Cart" class="cart-icon-img">
+				</a>
+				<span class="cart-count" id="cart-count">0</span>
+				<div class="cart-dropdown" id="cart-dropdown">
+					<ul id="cart-items">
+						<!-- Cart items will be added here dynamically -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="menu">
+		<h2>Menu</h2>
+		<div class="products">
+			<div class="product" data-code="SC123" data-name="Strawberry Cheesecake" data-price="120" data-image="strawberry.jpg">
+				<img src="Strawberry.jpg" alt="Product 1">
+				<h3>Strawberry Cheesecake</h3>
+				<p>A creamy, indulgent dessert with a rich layer of cheesecake
+				   on a buttery crust, topped with fresh strawberries.</p>
+				<p class="price">₱120</p>
+					<a href="#" class="add-to-cart">Add to Cart</a>
+			</div>
+			<div class="product" data-code="TC456" data-name="Triple Chocolate Cheesecake" data-price="150" data-image="triple.jpg">
+				<img src="triple.jpg" alt="Product 2">
+				<h3>Triple Chocolate Cheesecake</h3>
+				<p>Contains three layers of chocolate goodness: a chocolate crust, 
+				   creamy chocolate cheesecake filling, and a chocolate ganache topping.</p>
+				<p class="price">₱150</p>
+				<a href="#" class="add-to-cart">Add to Cart</a>
+			</div>
+			<div class="product" data-code="BC789" data-name="Blueberry Cheesecake" data-price="120" data-image="blueberry.jpg">
+				<img src="blueberry.jpg" alt="Product 3">
+				<h3>Blueberry Cheesecake</h3>
+				<p>A delightful combination of creamy cheesecake on a buttery crust, 
+				topped with sweet blueberry.</p>
+				<p class="price">₱120</p>
+				<a href="#" class="add-to-cart">Add to Cart</a>
+			</div>
+			<div class="product" data-code="MC456" data-name="Matcha Cheesecake" data-price="180" data-image="matcha.png">
+				<img src="matcha.png" alt="Product 4">
+				<h3>Matcha Cheesecake</h3>
+				<p>Fusion of creamy cheesecake with the earthy flavor of matcha green 
+				tea, perfect for those who enjoy a balance of sweetness and a hint of bitterness 
+				in their desserts.</p>
+				<p class="price">₱180</p>
+				<a href="#" class="add-to-cart">Add to Cart</a>
+			</div>
+			<div class="product" data-code="OC123" data-name="Oreo Cheesecake" data-price="110" data-image="oreo.jpg">
+				<img src="oreo.jpg" alt="Product 5">
+				<h3>Oreo Cheesecake</h3>
+				<p>Cookie crust and a creamy cheesecake filling, topped with oreo 
+				cookies for extra crunch and flavor.</p>
+				<p class="price">₱110</p>
+				<a href="#" class="add-to-cart">Add to Cart</a>
+			</div>
+			<div class="product" data-code="BSC789" data-name="Biscoff Cheesecake" data-price="120" data-image="biscoff.jpg">
+				<img src="biscoff.jpg" alt="Product 6">
+				<h3>Biscoff Cheesecake</h3>
+				<p>Creamy cheesecake on a buttery Biscoff cookie crust, topped with 
+				Biscoff cookie spread.</p>
+				<p class="price">₱120</p>
+				<a href="#" class="add-to-cart">Add to Cart</a>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="footer-logo">
+			<img src="pinklogo.png" alt="Cheesecake Factory Logo">
+		</div>
+		<div class="workinghours">
+			<h4>Working Hours</h4>
+			<p><b>OPEN DAILY</b> From 8:00AM to 6:00PM</p>
+		</div>
+		<div class="emailus">
+			<h4>Email Us</h4>
+			<p>cheesecakefactory@gmail.com</p>
+		</div>	
+		<div class="social-links">
+			<h4>Social Links</h4>
+			<a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+			<a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+		</div>
+	</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartCountElement = document.getElementById('cart-count');
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartItemsElement = document.getElementById('cart-items');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartItemsElement.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} x ${item.quantity} - ₱${(item.price * item.quantity).toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            });
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productElement = button.closest('.product');
+                const productCode = productElement.dataset.code;
+                const productName = productElement.dataset.name;
+                const productPrice = parseFloat(productElement.dataset.price);
+                const productImage = productElement.dataset.image;
+
+                const existingItem = cart.find(item => item.code === productCode);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        code: productCode,
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1,
+                        image: productImage
+                    });
+                }
+
+                updateCart();
+            });
+        });
+
+        updateCart();
+    });
+</script>
+</body>
+</html>

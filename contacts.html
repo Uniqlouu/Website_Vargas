@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contacts | Cheesecake Factory</title>
+	
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #FFFFFF;
+		}
+		.header-logo {
+			background-color: white;
+			text-align: center;
+			padding: 10px 0;
+		}
+		.header-logo img {
+			height: 150px;
+			width: auto;
+		}
+		header {
+			background-color: #FF5C94;
+			padding: 10px 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.navbar {
+			display: flex;
+			align-items: center;
+			background-color: #FF5C94;
+			flex-grow: 1;
+			justify-content: space-between;
+		}
+		.navbar ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+		.navbar ul li {
+			margin: 0 15px;
+		}
+		.navbar ul li a {
+			color: white;
+			text-decoration: none;
+			font-size: 18px;
+		}
+		.navbar ul li a:hover {
+			background-color: #FFCADC;
+			padding: 5px;
+			border-radius: 5px;
+		}
+		.search-bar {
+			display: flex;
+			justify-content: center;
+			flex-grow: 1;
+		}
+		.search-bar input {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 500px;
+		}
+		.cart {
+			position: relative;
+		}
+		.cart-count {
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			background-color: #FF5C94;
+			color: white;
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 14px;
+		}
+		.cart-icon-img {
+			height: 40px;
+			width: 40px;
+		}
+
+		.footer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #FF5C94;
+			padding: 20px 30px;
+			color: white;
+		}
+		.footer-logo img {
+			height: 125px;
+			width: auto;
+		}
+		.social-links {
+			display: flex;
+		}
+		.social-links a {
+			display: inline-block;
+			margin: 0 10px;
+			text-decoration: none;
+			border-radius: 50%;
+			overflow: hidden;
+			transition: border-color 0.3s ease;
+		}
+		.social-links a img {
+			width: 40px;
+			height: 40px;
+		}
+		.social-links a:hover {
+			border-color: #F0EBF4;
+		}
+		.cart-dropdown {
+			display: none;
+			position: absolute;
+			right: 0;
+			top: 100%;
+			width: 300px;
+			background-color: white;
+			border: 1px solid #ddd;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			z-index: 1000;
+		}
+		.cart-dropdown ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.cart-dropdown ul li {
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+			display: flex;
+			justify-content: space-between;
+		}
+		.cart-dropdown ul li:last-child {
+			border-bottom: none;
+		}
+		.map {
+			padding: 30px;
+			text-align: center;
+		}
+		
+		.map h2 {
+			color: #FF5C94;
+		}
+		.details {
+			text-align: center;
+		}
+		.details h3 {
+			color: #FF5C94;
+		}
+	</style>
+</head>
+<body>
+	<div class="header-logo">
+		<img src="logo.png" alt="Cheesecake Factory Logo">
+	</div>
+	<header>
+		<nav class="navbar">
+			<ul>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/index.html">Home</a></li>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/products.html">Products</a></li>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/contacts.html">Contacts</a></li>
+				<li><a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/aboutus.html">About Us</a></li>
+			</ul>
+			<div class="search-bar">
+				<input type="text" placeholder="Search...">
+			</div>
+			<div class="cart">
+				<a href="file:///C:/Users/Tess/Desktop/Vargas%20Finals/cart.html" target="_blank">
+					<img src="bag.png" alt="Cart" class="cart-icon-img">
+				</a>
+				<span class="cart-count" id="cart-count">0</span>
+				<div class="cart-dropdown" id="cart-dropdown">
+					<ul id="cart-items">
+						<!-- Cart items will be added here dynamically -->
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="map">
+		<h2>Visit us! We are located at Rizal Park, Manila</h2>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.28823878691!2d120.97418258885496!3d14.582644599999993!2m3!1f
+		0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca255e7e133f%3A0xb72a3487b6759a32!2sRizal%20Park!5e0!3m2!1sen!2sph!4v1709723118828!5m2!1sen!2sph" 
+		width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+	<div class="details">
+		<h3>OUR PHONE</h3>
+		<P>81234567</P>
+		<h3>EMAIL US</h3>
+		<p>cheesecakefactory@gmail.com</p>
+	</div>	
+	<footer class="footer">
+		<div class="footer-logo">
+			<img src="pinklogo.png" alt="Cheesecake Factory Logo">
+		</div>
+		<div class="workinghours">
+			<h4>Working Hours</h4>
+			<p><b>OPEN DAILY</b> From 8:00AM to 6:00PM</p>
+		</div>
+		<div class="emailus">
+			<h4>Email Us</h4>
+			<p>cheesecakefactory@gmail.com</p>
+		</div>	
+		<div class="social-links">
+			<h4>Social Links</h4>
+			<a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" alt="Facebook"></a>
+			<a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+		</div>
+	</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartCountElement = document.getElementById('cart-count');
+        const cartDropdown = document.getElementById('cart-dropdown');
+        const cartItemsElement = document.getElementById('cart-items');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartItemsElement.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} x ${item.quantity} - ₱${(item.price * item.quantity).toFixed(2)}`;
+                cartItemsElement.appendChild(li);
+            });
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productElement = button.closest('.product');
+                const productCode = productElement.dataset.code;
+                const productName = productElement.dataset.name;
+                const productPrice = parseFloat(productElement.dataset.price);
+                const productImage = productElement.dataset.image;
+
+                const existingItem = cart.find(item => item.code === productCode);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        code: productCode,
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1,
+                        image: productImage
+                    });
+                }
+
+                updateCart();
+            });
+        });
+
+        updateCart();
+    });
+</script>
+</body>
+</html>
